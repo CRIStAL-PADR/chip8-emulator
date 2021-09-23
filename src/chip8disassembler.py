@@ -21,7 +21,8 @@ class Chip8Disassembler:
                 return f'V{x:X} := V{y:X}'
         elif opcode == 0xA:
             return f'I := {hex(decoder.get_number(1, 3))}'
-
+        elif opcode == 0xD:
+            return f'sprite V{decoder.digit_at(1)} V{decoder.digit_at(2)} {hex(decoder.digit_at(3))}'
         return f'Undefined (0x{decoder.get_number(0, 3):04X})'
 
     def disassemble_stream(self, memory, number_of_instruction, initial_position):
