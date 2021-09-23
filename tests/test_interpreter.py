@@ -36,3 +36,21 @@ class Chip8InterpreterTest(unittest.TestCase):
         interpreter.step()
         interpreter.step()
         self.assertEqual(interpreter.I, 0x53)
+
+    def test_register_out_of_bounds_raises_error(self):
+        interpreter = Chip8Interpreter(b'')
+
+        with self.assertRaises(IndexError) as error:
+            interpreter.get_register(16)
+
+    def test_register_out_of_negative_bounds_raises_error(self):
+        interpreter = Chip8Interpreter(b'')
+
+        with self.assertRaises(IndexError) as error:
+            interpreter.get_register(-1)
+
+    def test_default_registers(self):
+        interpreter = Chip8Interpreter(b'')
+        # Test registers between 0 and 15 (in hexa)
+        for i in range(0, 0xf):
+            self.assertEqual(interpreter.get_register(i), 0)

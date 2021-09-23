@@ -5,6 +5,7 @@ class Chip8Interpreter:
         self.I = 0
         self.PC = 0
         self.program = program
+        self.registers = [0] * 16
 
     def step(self):
         self.execute(self.program[self.PC: self.PC + 2])
@@ -24,3 +25,13 @@ class Chip8Interpreter:
             self.PC = jump_target
         else:
             raise Exception("Undefined instruction")
+
+    """
+    Get the value of the register @register_id
+    Only register ids between 0 and 15 are allowed
+    Registers out of those bounds raise an IndexError
+    """
+    def get_register(self, register_id):
+        if register_id < 0:
+            raise IndexError(register_id)
+        return self.registers[register_id]
