@@ -20,7 +20,7 @@ class Chip8Disassembler:
                 y = decoder.digit_at(2)
                 return f'V{x:X} := V{y:X}'
         elif opcode == 0xA:
-            return f'I := {decoder.get_number(1, 3):03X}'
+            return f'I := {hex(decoder.get_number(1, 3))}'
 
         return f'Undefined (0x{decoder.get_number(0, 3):04X})'
 
