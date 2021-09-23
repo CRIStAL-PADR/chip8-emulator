@@ -41,6 +41,9 @@ class Chip8DecompilerTest(unittest.TestCase):
     def test_sprite(self):
         self.assertEqual(disassemble(b'\xD0\x11'), 'sprite V0 V1 0x1')
 
+    def test_sprite_letter_casing(self):
+        self.assertEqual(disassemble(b'\xDA\xBA'), 'sprite VA VB 0xa')
+
     def test_undefined_8_family_instruction(self):
         self.assertEqual(disassemble(b'\x80\x08'), 'Undefined (0x8008)')
 
