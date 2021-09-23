@@ -13,3 +13,5 @@ Training topic:
 - git + github.
 
 Each participant should work in each how branch called following this convention: "main-damien" 
+
+For more information about the Chip8, see (awesome chip8)[https://chip-8.github.io/links/#documentation]
